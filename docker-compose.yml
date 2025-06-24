@@ -16,6 +16,8 @@ services:
       - ./tsconfig.build.json:/usr/src/app/tsconfig.build.json
     environment:
       - NODE_ENV=development
+      - LOG_LEVEL=info
+      - LOG_TYPE=pino-pretty
     command: ["pnpm", "start:dev"]
     stdin_open: true
     tty: true
