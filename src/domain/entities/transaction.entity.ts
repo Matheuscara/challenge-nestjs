@@ -1,4 +1,4 @@
-import { randomUUID, } from 'crypto';
+import { randomUUID } from 'crypto';
 import { DomainError } from '../errors/domain-error';
 import { isUUID } from 'class-validator';
 
@@ -32,7 +32,10 @@ export class Transaction {
       throw new DomainError('Invalid transaction ID. Must be a valid UUID.');
     }
 
-    if (!(this._timestamp instanceof Date) || isNaN(this._timestamp.getTime())) {
+    if (
+      !(this._timestamp instanceof Date) ||
+      isNaN(this._timestamp.getTime())
+    ) {
       throw new DomainError('Invalid timestamp. Must be a valid Date object.');
     }
 

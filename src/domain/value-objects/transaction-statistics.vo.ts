@@ -27,8 +27,10 @@ export class TransactionStatisticsVO {
     const now = Date.now();
     const cutoff = now - 60_000;
 
-    const recent = transactions.filter(tx => tx.timestamp.getTime() >= cutoff);
-    const values = recent.map(tx => tx.amount);
+    const recent = transactions.filter(
+      (tx) => tx.timestamp.getTime() >= cutoff,
+    );
+    const values = recent.map((tx) => tx.amount);
 
     if (values.length === 0) {
       return new TransactionStatisticsVO({

@@ -16,17 +16,11 @@ export class CreateTransactionUseCase {
   ) {}
 
   async execute(input: CreateTransactionDto): Promise<void> {
-    try {
-      const transaction = Transaction.create({
-        amount: input.amount,
-        timestamp: input.timestamp,
-      });
+    const transaction = Transaction.create({
+      amount: input.amount,
+      timestamp: input.timestamp,
+    });
 
-      await this.repository.create(transaction);
-    } catch (error) {
-      if (error instanceof DomainError) {
-        throw new UnprocessableEntityException();
-      }
-    }
+    await this.repository.create(transaction);
   }
 }

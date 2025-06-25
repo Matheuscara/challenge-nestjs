@@ -6,16 +6,17 @@ import { ITransactionRepository } from 'src/domain/repositories/transaction.repo
 export class TransactionRepositoryImpl implements ITransactionRepository {
   private readonly transactions: Transaction[] = [];
 
-  async create(transaction: Transaction): Promise<void> {
+  create(transaction: Transaction): Promise<void> {
     this.transactions.push(transaction);
-    console.log(this.transactions)
+    return Promise.resolve();
   }
 
-  async list(): Promise<Transaction[]> {
-    return [...this.transactions];
+  list(): Promise<Transaction[]> {
+    return Promise.resolve([...this.transactions]);
   }
 
-  async deleteAll(): Promise<void> {
+  deleteAll(): Promise<void> {
     this.transactions.length = 0;
+    return Promise.resolve();
   }
 }

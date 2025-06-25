@@ -14,7 +14,7 @@ import { DeleteAllTransactionsUseCase } from './application/delete-all-transacti
       isGlobal: true,
       validationSchema: Joi.object({}),
     }),
-    CacheModule
+    CacheModule,
   ],
   controllers: [TransactionController],
   providers: [CreateTransactionUseCase, DeleteAllTransactionsUseCase],

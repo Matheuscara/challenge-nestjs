@@ -17,5 +17,6 @@ COPY src src
 COPY test test
 
 EXPOSE 3000
+EXPOSE 9229
 
 CMD ["pnpm", "start:dev"]
