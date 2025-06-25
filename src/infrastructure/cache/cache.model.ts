@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ITransactionRepository } from 'src/domain/repositories/repository.repository';
-import { TransactionRepositoryImpl } from './repository-impl/transaction.repository.impl';
+import { ITransactionRepository } from '../../domain/repositories/transaction.repository';
+import { TransactionRepositoryImpl } from './repositories-impl/transaction.repository.impl';
 
 @Module({
   imports: [ConfigModule],
@@ -11,6 +11,6 @@ import { TransactionRepositoryImpl } from './repository-impl/transaction.reposit
       useClass: TransactionRepositoryImpl,
     },
   ],
-  exports: [TransactionRepositoryImpl],
+  exports: [ITransactionRepository],
 })
-export class DatabaseVitrumModule {}
+export class CacheModule {}

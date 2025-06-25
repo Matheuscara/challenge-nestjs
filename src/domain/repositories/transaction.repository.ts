@@ -1,7 +1,7 @@
 import { Transaction } from '../entities/transaction.entity';
 
 export interface ITransactionRepository {
-  create(transaction: Transaction): Promise<void>;
+  create(transaction: Omit<Transaction, 'id'>): Promise<void>;
   list(): Promise<Transaction[]>
   deleteAll(): Promise<void>;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Transaction } from 'src/domain/entities/transaction.entity';
-import { ITransactionRepository } from 'src/domain/repositories/repository.repository';
+import { ITransactionRepository } from 'src/domain/repositories/transaction.repository';
 
 @Injectable()
 export class TransactionRepositoryImpl implements ITransactionRepository {
@@ -8,6 +8,7 @@ export class TransactionRepositoryImpl implements ITransactionRepository {
 
   async create(transaction: Transaction): Promise<void> {
     this.transactions.push(transaction);
+    console.log(this.transactions)
   }
 
   async list(): Promise<Transaction[]> {
