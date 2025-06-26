@@ -87,6 +87,8 @@ src/
 - **Prod:** saídas em JSON → Loki → Grafana.
 - **Dev/Debug:** `pino-pretty` (colorido e legível).
 
+- leia o documento GRAFANA.md para saber como rodar o projeto com Loki e Grafana :) 
+
 Config selecionada automaticamente por `NODE_ENV`.
 
 ---
