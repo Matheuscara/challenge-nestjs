@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { LoggerModule } from './utils/logger';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import * as Joi from 'joi';
 import {
   CreateTransactionUseCase,
@@ -15,6 +15,8 @@ import {
   TransactionController,
   HealthController,
 } from './infrastructure';
+import { HttpModule } from '@nestjs/axios';
+import { LoggingInterceptor } from './utils/interceptors/ logging.interceptor';
 
 @Module({
   imports: [
@@ -29,6 +31,10 @@ import {
         limit: 10,
       },
     ]),
+    HttpModule.register({
+      timeout: 5000,
+      maxRedirects: 5,
+    }),
     CacheModule,
   ],
   controllers: [TransactionController, StatisticsController, HealthController],
@@ -39,6 +45,10 @@ import {
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
     },
   ],
 })
