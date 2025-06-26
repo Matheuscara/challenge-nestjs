@@ -8,7 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ResponseMessages } from '../constants/response-messages';
-import { DomainError } from 'src/domain/errors/domain-error';
+import { DomainError } from '../../domain/errors/domain-error';
 
 @Injectable()
 export class DomainErrorInterceptor implements NestInterceptor {

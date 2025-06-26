@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { ITransactionRepository } from '../../domain/repositories/transaction.repository';
-import { TransactionStatisticsVO } from 'src/domain/value-objects/transaction-statistics.vo';
+import { TransactionStatisticsVO } from '../../domain/value-objects/transaction-statistics.vo';
 import { FindTransactionStatisticsDto } from './find-transaction-statistics.dto';
 
 @Injectable()
