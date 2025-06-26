@@ -13,6 +13,7 @@ import {
   CacheModule,
   StatisticsController,
   TransactionController,
+  HealthController,
 } from './infrastructure';
 
 @Module({
@@ -30,7 +31,7 @@ import {
     ]),
     CacheModule,
   ],
-  controllers: [TransactionController, StatisticsController],
+  controllers: [TransactionController, StatisticsController, HealthController],
   providers: [
     CreateTransactionUseCase,
     DeleteAllTransactionsUseCase,
