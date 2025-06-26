@@ -69,14 +69,6 @@ src/
 >
 > Isso permite trocar facilmente a persistência sem alterar regras de negócio.
 
-### 4.2 Application
-
-Casos de uso (create, find, list, delete) + DTOs e testes unitários.
-
-### 4.3 Infrastructure
-
-Atualmente só o `TransactionRepositoryImpl` (array na memória). Futuras integrações (Redis, Postgres, etc.) entram aqui.
-
 ---
 
 ## 5. Interceptadores Globais
