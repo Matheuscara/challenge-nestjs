@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import {
   FindTransactionStatisticsDto,
   FindTransactionStatisticsUseCase,
@@ -11,6 +12,7 @@ export class StatisticsController {
   ) {}
 
   @Get()
+  @Throttle({ default: { limit: 20, ttl: 60000 } })
   get(): FindTransactionStatisticsDto {
     return this.findTransactionStatisticsUseCase.execute();
   }

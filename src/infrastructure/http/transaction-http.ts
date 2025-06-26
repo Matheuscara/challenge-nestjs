@@ -6,6 +6,7 @@ import {
   HttpStatus,
   Delete,
 } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import {
   CreateTransactionUseCase,
   CreateTransactionDto,
@@ -22,6 +23,7 @@ export class TransactionController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
+  @Throttle({ default: { limit: 5, ttl: 60000 } })
   create(@Body() dto: CreateTransactionDto): string {
     this.createTransactionUseCase.execute(dto);
 
@@ -29,6 +31,7 @@ export class TransactionController {
   }
 
   @Delete()
+  @Throttle({ default: { limit: 2, ttl: 60000 } })
   deleteAll(): string {
     this.deleteAllTransactionsUseCase.execute();
 
