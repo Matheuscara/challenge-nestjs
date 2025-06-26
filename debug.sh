@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Define aqui qual arquivo usar
 COMPOSE_FILE="docker-compose.debug.yml"
 
 start() {
