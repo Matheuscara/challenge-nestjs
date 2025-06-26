@@ -72,6 +72,8 @@ Resposta esperada:
    { env = "production" }
 ```
 
+![exemplo](./grafana-exemplo.png)
+
 Você verá as linhas de log enviadas pela API em tempo real.
 
 Use os controles de intervalo (Last 5m, 15m…) para ajustar o período.
