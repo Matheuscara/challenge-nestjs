@@ -21,7 +21,7 @@ export class Transaction {
     timestamp: Date;
   }): Transaction {
     return new Transaction({
-      id: props?.id || randomUUID(),
+      id: props.id ?? randomUUID(),
       amount: props.amount,
       timestamp: props.timestamp,
     });
@@ -32,10 +32,7 @@ export class Transaction {
       throw new DomainError('Invalid transaction ID. Must be a valid UUID.');
     }
 
-    if (
-      !(this._timestamp instanceof Date) ||
-      isNaN(this._timestamp.getTime())
-    ) {
+    if (!(this._timestamp instanceof Date)) {
       throw new DomainError('Invalid timestamp. Must be a valid Date object.');
     }
 

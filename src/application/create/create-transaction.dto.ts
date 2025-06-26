@@ -1,6 +1,5 @@
-import { IsNumber, IsNotEmpty } from 'class-validator';
+import { IsNumber, IsNotEmpty, IsDate } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
-import { IsNotFutureDate } from '../utils/validators/is-not-future-date.validator';
 
 export class CreateTransactionDto {
   @IsNotEmpty()
@@ -10,6 +9,6 @@ export class CreateTransactionDto {
 
   @IsNotEmpty()
   @Type(() => Date)
-  @IsNotFutureDate({ message: 'Timestamp cannot be in the future' })
+  @IsDate({ message: 'timestamp deve ser uma data válida' })
   timestamp: Date;
 }

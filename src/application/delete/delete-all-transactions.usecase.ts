@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { ITransactionRepository } from '../domain/repositories/transaction.repository';
+import { ITransactionRepository } from '../../domain/repositories/transaction.repository';
 
 @Injectable()
 export class DeleteAllTransactionsUseCase {
@@ -8,7 +8,7 @@ export class DeleteAllTransactionsUseCase {
     private readonly repository: ITransactionRepository,
   ) {}
 
-  async execute(): Promise<void> {
-    await this.repository.deleteAll();
+  execute(): void {
+    this.repository.deleteAll();
   }
 }

@@ -6,17 +6,15 @@ import { ITransactionRepository } from 'src/domain/repositories/transaction.repo
 export class TransactionRepositoryImpl implements ITransactionRepository {
   private readonly transactions: Transaction[] = [];
 
-  create(transaction: Transaction): Promise<void> {
+  create(transaction: Transaction): void {
     this.transactions.push(transaction);
-    return Promise.resolve();
   }
 
-  list(): Promise<Transaction[]> {
-    return Promise.resolve([...this.transactions]);
+  listFrom(date: Date): Transaction[] {
+    return this.transactions.filter((tx) => tx.timestamp >= date);
   }
 
-  deleteAll(): Promise<void> {
+  deleteAll(): void {
     this.transactions.length = 0;
-    return Promise.resolve();
   }
 }

@@ -24,15 +24,7 @@ export class TransactionStatisticsVO {
   }
 
   public static create(transactions: Transaction[]): TransactionStatisticsVO {
-    const now = Date.now();
-    const cutoff = now - 60_000;
-
-    const recent = transactions.filter(
-      (tx) => tx.timestamp.getTime() >= cutoff,
-    );
-    const values = recent.map((tx) => tx.amount);
-
-    if (values.length === 0) {
+    if (transactions.length === 0) {
       return new TransactionStatisticsVO({
         count: 0,
         sum: 0,
@@ -42,6 +34,7 @@ export class TransactionStatisticsVO {
       });
     }
 
+    const values = transactions.map((tx) => tx.amount);
     const sum = values.reduce((acc, v) => acc + v, 0);
     const min = Math.min(...values);
     const max = Math.max(...values);
